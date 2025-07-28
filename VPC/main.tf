@@ -3,7 +3,7 @@
 ###############################################################################
 
 resource "aws_instance" "my_EC2" {
-    ami = "ami-0c94855ba95c71c99"  #Take this Amazon Linux AMI ID From AWS Console
+    ami = "ami-0c94855ba95c71c99"  #Take this Amazon Linux AMI ID From AWS Console    
     instance_type = "t2.micro"
     availability_zone = "us-east-1"
     key_name =  "my_key"           #Put name of key-pair available as per region.
@@ -71,6 +71,14 @@ resource "aws_subnet" "database_subnet_1" {
   tags = {
     Name = var.database_subnet_tag_1
   }
+}
+
+#Below code will route all resources (EC2) in pvt subnet to the NAT instance
+
+resource "aws_route" "private_nat_gateway" {
+    route_table_id         = aws_route_table.Private_route_table.id
+    destination_cidr_block = "0.0.0.0/0"
+    nat_gateway_id = aws_nat_gateway.Nat_instance.id    #Nat_instance is written at code below to create EC2 for Nat_instance
 }
 
 ################################################################################
