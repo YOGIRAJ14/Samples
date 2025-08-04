@@ -2,7 +2,7 @@ resource "aws_db_instance" "db_instance" {
   engine                   = var.engine_name                              # DB engine type (e.g., "mysql", "postgres")
   db_name                  = var.db_name                                  # Database name inside the instance
   username                 = var.user_name                                # Master username for DB
-  password                 = var.pass                                     # Master password (should come from a secure variable)
+  password                 = var.pass                                     # Master password (should come from a secure variable)....Learn how to sercure it
   skip_final_snapshot      = var.skip_finalSnapshot                       # Skip snapshot on delete (true/false)
   db_subnet_group_name     = aws_db_subnet_group.db_sub_group.id          # Subnet group for DB (used for VPC setup)
   delete_automated_backups = var.delete_automated_backup                  # Whether to delete automated backups (true/false)
