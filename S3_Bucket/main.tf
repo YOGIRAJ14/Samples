@@ -20,3 +20,8 @@ resource "aws_s3_bucket_public_access_block" "block_public" {
   ignore_public_acls      = true
   restrict_public_buckets = true
 }
+
+# terraform init       # First time setup (downloads AWS provider)
+# terraform plan       # Shows what will be created
+# terraform apply      # Actually creates the S3 bucket
+
