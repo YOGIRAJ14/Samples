@@ -17,5 +17,6 @@ variable "tag_values" {
   Team  = "Cloudengg"
   Cloudtype = "aws"
   os = "Ubuntu"
+  costcentre = 0022        #We allot no 0022 (can be diff) for each team so company can calculate resources cost for particular team
   }
 }
