@@ -1,3 +1,5 @@
+#It is use to store .tfstate file on S3 bucket
+
 terraform {
   backend "s3" {
     bucket = "young-minds-app"        # S3 bucket name to store the tfstate file
