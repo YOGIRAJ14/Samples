@@ -1,6 +1,6 @@
 
 apiVersion: apps/v1
-kind: Replicaset
+kind: ReplicaSet
 metadata:
    name: forntend
    labels:
@@ -8,19 +8,26 @@ metadata:
      tier: forntend
 spec:
    replicas: 3
-   selector
-     matchLabels:
+   selector :
+     matchLabels:                   # Means this ReplicaSet will manage only Pods that have the label tier: frontend.
        tier: forntend
    template: 
-     meatadata:
-       labels:
+     metadata:
+       labels:                      # It defines what labels the new Pods will have when created.
          tier: forntend
       spec:
          containers:
-           - name: nginx container
+           - name: nginx-container
              image: nginx      
 
 
 # kubectl apply -f repilcaset.yml             
 # kubectl get rs
 # kubectl describe name 
+
+# Why must they match?
+
+# If selector.matchLabels ≠ template.metadata.labels,
+# the ReplicaSet won’t recognize its own Pods.
+
+# It will keep trying to create new Pods (thinking none exist), leading to mismatch problems.
